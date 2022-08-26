@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './src/app.jsx';
 
 // container is assigned to the *node* with id of 'root'
