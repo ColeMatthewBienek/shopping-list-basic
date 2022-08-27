@@ -4,7 +4,7 @@
   "description": "basic react app template",
   "main": "index.js",
   "scripts": {
-    "react-build": "webpack build --config ./webpack.config.js --mode development --watch",
+    "react-build": "webpack build --config ./webpack.config.js --mode development ",
     "react-dev-serve": "webpack serve --config ./webpack.config.js --mode development",
     "server-start": "node ./server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

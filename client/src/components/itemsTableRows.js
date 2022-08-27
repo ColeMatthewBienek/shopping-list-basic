@@ -1,26 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const ItemsTableRows = ({item, index}) => {
+const ItemsTableRows = ({item, index, updateListWithStrike}) => {
 
-  const [checked, setChecked] = useState(item.isChecked);
+
+  const strikeObj = {
+    textDecoration: 'line-through'
+  }
 
   function handleClick(event){
-
-
-    if(item.isChecked) {
-      console.log(item.item, "is checked")
-    } else {
-
-      console.log(event.target)
-      event.target.style.setProperty('text-decoration', 'line-through');
-
-    }
+    updateListWithStrike(index, !item.isCrossed);
   };
+
   return <tr key={index} onClick={handleClick}>
-          <td>{item.item}</td>
-          <td>{item.qty}</td>
+          <td style={item.isCrossed ? strikeObj : null}>{item.item}</td>
+          <td style={item.isCrossed ? strikeObj : null}>{item.qty}</td>
          </tr>
   };
-
 
 export default ItemsTableRows;

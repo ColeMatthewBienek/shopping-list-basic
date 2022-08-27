@@ -9,7 +9,12 @@ module.exports = {
         path: path.resolve(__dirname, 'client/dist'),
         filename: 'bundle.js',
     },
+    watchOptions: {
 
+        ignored: /node_modules/
+    },
+    watch: true,
+    mode: 'development',
     // Babel config for react
     module: {
         rules: [

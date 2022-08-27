@@ -4,17 +4,32 @@ import data from '../../../data/data.js';
 
 import ListItem from './listItem.js';
 import UserForm from './userForm.js';
-import ItemsTableRows from './ItemsTableRows.js';
+import ItemsTableRows from './itemsTableRows.js';
 import axios from 'axios';
 
 function ListData() {
 const [list, setList] = useState(data);
 const [error, setError] = useState(false);
 
+  const updateListWithStrike = function(index, strike) {
+    console.log('listData side', strike)
+    const updateStrike = list.map((ele, curIndex) => {
+      if (curIndex === index) {
+        return {...ele, isCrossed: strike}
+      }
+      return ele;
+    });
+    setList(updateStrike);
+    console.log('list state is now', list)
+  };
+
+
+
   const updateList = async (groceryItem, qty) => {
     const newItem = {
       item: groceryItem,
-      qty: qty
+      qty: qty,
+      isChecked: false
     }
 
     setList([...list, newItem]) // DELETE ME AFTER SERVER ROUTE EXISTS
@@ -42,7 +57,7 @@ const [error, setError] = useState(false);
           </thead>
           <tbody>
             {list.map((item, index) => {
-              return <ItemsTableRows key={index} item={item} index={index} />
+              return <ItemsTableRows key={index} updateListWithStrike={updateListWithStrike} item={item} index={index} />
             })}
           </tbody>
         </table>

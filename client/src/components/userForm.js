@@ -13,6 +13,7 @@ function UserForm({list, updateList}) {
   };
 
 function handleAddItem(event) {
+  console.log('test')
   setGroceryItem(event.target.value);
 }
 
