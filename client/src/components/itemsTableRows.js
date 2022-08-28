@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 const ItemsTableRows = ({item, index, updateListWithStrike}) => {
-
-
   const strikeObj = {
     textDecoration: 'line-through'
   }

@@ -11,29 +11,29 @@ function ListData() {
 const [list, setList] = useState(data);
 const [error, setError] = useState(false);
 
-  const updateListWithStrike = function(index, strike) {
-    console.log('listData side', strike)
-    const updateStrike = list.map((ele, curIndex) => {
+  const updateListWithStrike = (index, strike) => {
+      const updateStrike = list.map((ele, curIndex) => {
       if (curIndex === index) {
         return {...ele, isCrossed: strike}
       }
       return ele;
     });
     setList(updateStrike);
-    console.log('list state is now', list)
   };
 
-
+  const removeCrossedItems = async (list) => {
+    const filteredList = list.filter(item => item.isCrossed === false);
+    setList(filteredList);
+  }
 
   const updateList = async (groceryItem, qty) => {
     const newItem = {
       item: groceryItem,
       qty: qty,
-      isChecked: false
+      isCrossed: false
     }
 
     setList([...list, newItem]) // DELETE ME AFTER SERVER ROUTE EXISTS
-
 
     // axios.put('/groceries', newItem)
     //   .then(() => {
@@ -66,7 +66,7 @@ const [error, setError] = useState(false);
             return <ListItem key={index} item={item} index={index} />
           })}
         </ul> */}
-        <UserForm list={list} updateList={updateList}/>
+        <UserForm list={list} updateList={updateList} removeCrossedItems={removeCrossedItems}/>
         {error ? <p>Error writing to db</p> : null}
       </div>
   )
