@@ -27,16 +27,17 @@ const getAllGroceries = (req, res) => {
 }
 
 const addRecord = (req, res) => {
-  const { groceryItem, quantity } = req.body;
-  console.log(`Processing request to add record: ${groceryItem}:${quantity}`);
-  let sql = "INSERT INTO groceries(groceryItem, quantity) VALUES (?,?)"
-  let vals = [groceryItem, quantity];
+  const { groceryID, groceryItem, quantity, isChecked } = req.body;
+  console.log(`Processing request to add record: ${groceryID}, ${groceryItem}:${quantity}, ${isChecked}`);
+  let sql = "INSERT INTO groceries(groceryID, groceryItem, quantity, isChecked) VALUES (?,?,?,?)"
+  let vals = [groceryID, groceryItem, quantity, isChecked];
   db.query(sql, vals, (err, result) =>{
     if (err) {
       console.log(err)
       res.status(400).send(err);
     }
     res.status(200).send(result);
+
   })
 }
 
@@ -50,6 +51,7 @@ const updateStrikethrough = (req, res) => {
       res.status(400).send(err);
     }
     res.status(200).send(result);
+
   })
 }
 
