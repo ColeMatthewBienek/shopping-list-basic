@@ -6,12 +6,12 @@ const ItemsTableRows = ({item, index, updateListWithStrike}) => {
   }
 
   function handleClick(event){
-    updateListWithStrike(index, !item.isCrossed);
+    updateListWithStrike(index, !item.isChecked);
   };
 
   return <tr key={index} onClick={handleClick}>
-          <td style={item.isCrossed ? strikeObj : null}>{item.item}</td>
-          <td style={item.isCrossed ? strikeObj : null}>{item.qty}</td>
+          <td style={item.isChecked ? strikeObj : null}>{item.groceryItem}</td>
+          <td style={item.isChecked ? strikeObj : null}>{item.quantity}</td>
          </tr>
   };
 

@@ -8,4 +8,6 @@
 
 // console.log(feedDataJSON);
 
-export default data;
+
+exports.data = data;
+
