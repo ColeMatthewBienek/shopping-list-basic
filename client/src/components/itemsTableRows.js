@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const ItemsTableRows = ({item, index, updateListWithStrike}) => {
+  console.log('item------------', item)
   const strikeObj = {
     textDecoration: 'line-through'
   }
@@ -10,8 +11,8 @@ const ItemsTableRows = ({item, index, updateListWithStrike}) => {
   };
 
   return <tr key={index} onClick={handleClick}>
-          <td style={item.isChecked ? strikeObj : null}>{item.groceryItem}</td>
-          <td style={item.isChecked ? strikeObj : null}>{item.quantity}</td>
+          <td style={item.isChecked ? strikeObj : null}>{item.item}</td>
+          <td style={item.isChecked ? strikeObj : null}>{item.qty}</td>
          </tr>
   };
 

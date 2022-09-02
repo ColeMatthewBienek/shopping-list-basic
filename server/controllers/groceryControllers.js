@@ -1,7 +1,7 @@
-const { getAllGroceries } = require('../../database/database.js');
-const { addRecord } = require('../../database/database.js');
-const { updateStrikethrough } = require('../../database/database.js');
-const { deleteRecords } = require('../../database/database.js');
+const { getAllGroceries } = require('../../mongoDatabase/mongo.js');
+const { addRecord } = require('../../mongoDatabase/mongo.js');
+const { updateStrikethrough } = require('../../mongoDatabase/mongo.js');
+const { deleteRecords } = require('../../mongoDatabase/mongo.js');
 
 
 const handleGetAllRecordsEndpoint =  (req,res)=> {

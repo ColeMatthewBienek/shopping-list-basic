@@ -14,6 +14,7 @@ function ListData() {
   const loadList = () => {
     axios.get('/allRecords')
       .then((response) => {
+        console.log('res from mongo---', response.data)
         setList(response.data);
       })
       .catch((error) => {
@@ -46,7 +47,7 @@ function ListData() {
 
     axios.delete('/deleteRecords')
       .then(() => {
-        setList(filteredList);
+        loadList();
       })
       .catch(err => {
         console.log(err)
@@ -56,15 +57,17 @@ function ListData() {
 
   const updateList = async (item, qty) => {
     const newItem = {
-      groceryItem: item,
-      quantity: qty,
-      isChecked: 0
+      item: item,
+      qty: qty,
+      isChecked: false
     }
 
     // setList([...list, newItem]) // DELETE ME AFTER SERVER ROUTE EXISTS
 
     axios.post('/addRecord', newItem)
+
       .then(() => {
+        console.log('***************', newItem)
         // console.log(response);
         // setList([...list, newItem])
         loadList();
